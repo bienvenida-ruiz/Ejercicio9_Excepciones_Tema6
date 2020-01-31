@@ -7,8 +7,11 @@ package ejercicio9_excepciones_tema6;
  */
 
 /**
- *
- * @author ITP1DAM
+ * Esta clase representa a una excepción para el 
+ * rango de las notas de la clase Alumno.
+ * Esta clase extiende del objeto Exception.
+ * 
+ * @author Bienvenida Ruiz Mazuela
  */
 public class RangoException extends Exception{
  
