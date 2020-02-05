@@ -78,4 +78,46 @@ public class Alumno {
 
     }
 
+    /**
+     * Método que permite la modicación de las notas del alumno.
+     * @param posicion
+     * @param nnota
+     * @throws RangoException
+     * @throws ArrayIndexOutOfBoundsException 
+     */
+    public void modificarNota(int posicion, double nnota)
+            throws RangoException, ArrayIndexOutOfBoundsException {
+        Scanner teclado2 = new Scanner(System.in);
+        double nota;
+
+        for (int i = 0; i < num_asignaturas; i++) {
+
+            System.out.println("Dime la nota " + (i + 1) + ":");
+            nota = teclado2.nextDouble();
+
+            if (nota >= 0 && nota <= 10) {
+                notas.add(nota);
+            } else {
+                throw new RangoException("Error. Nota no válida.");
+            }
+            
+            if(notas.get(i) > 5){
+                throw new ArrayIndexOutOfBoundsException("Error, posicion no válida en el array.");
+            }
+        }
+
+    }
+    
+    /**
+     * Muestra por pantalla las calificaciones del alumno.
+     */
+    public void imprimirCalificaciones() { 
+    
+        System.out.println(nombre);
+        for (int i = 0; i < notas.size(); i++) {
+            System.out.println(notas.get(i));
+        }
+    
+    }
+
 }
