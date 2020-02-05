@@ -31,9 +31,11 @@ public class Alumno {
      * Constructor por parámetros.
      *
      * @param nombre
+     * @param notas
      */
-    public Alumno(String nombre) {
+    public Alumno(String nombre, ArrayList<Double> notas) {
         this.nombre = nombre;
+        this.notas = notas;
     }
 
     /**
@@ -55,6 +57,25 @@ public class Alumno {
     }
 
     /**
+     * GETTER Método por el que se obtienen las notas.
+     *
+     * @return notas
+     */
+    public ArrayList<Double> getNotas() {
+        return notas;
+
+    }
+
+    /**
+     * SETTER Método por el cual se modifican la variable notas.
+     *
+     * @param notas
+     */
+    public void setNotas(ArrayList<Double> notas) {
+        this.notas = notas;
+    }
+
+    /**
      * Método que pide las notas del alumno y controla por medio de
      * RangoException que se introduzcan notas válidas.
      *
@@ -71,19 +92,20 @@ public class Alumno {
 
             if (nota >= 0 && nota <= 10) {
                 notas.add(nota);
+
             } else {
                 throw new RangoException("Error. Nota no válida.");
             }
         }
-
     }
 
     /**
      * Método que permite la modicación de las notas del alumno.
+     *
      * @param posicion
      * @param nnota
      * @throws RangoException
-     * @throws ArrayIndexOutOfBoundsException 
+     * @throws ArrayIndexOutOfBoundsException
      */
     public void modificarNota(int posicion, double nnota)
             throws RangoException, ArrayIndexOutOfBoundsException {
@@ -100,24 +122,24 @@ public class Alumno {
             } else {
                 throw new RangoException("Error. Nota no válida.");
             }
-            
-            if(notas.get(i) > 5){
+
+            if (notas.get(i) > 5) {
                 throw new ArrayIndexOutOfBoundsException("Error, posicion no válida en el array.");
             }
         }
 
     }
-    
+
     /**
      * Muestra por pantalla las calificaciones del alumno.
      */
-    public void imprimirCalificaciones() { 
-    
-        System.out.println(nombre);
+    public void imprimirCalificaciones() {
+
+        System.out.println("Las notas del alumno " + nombre + " son las siguientes: ");
         for (int i = 0; i < notas.size(); i++) {
-            System.out.println(notas.get(i));
+            System.out.println("Asignatura " + (i+1) + ": " + notas.get(i));
         }
-    
+
     }
 
 }
