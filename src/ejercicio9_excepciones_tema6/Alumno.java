@@ -112,20 +112,14 @@ public class Alumno {
         Scanner teclado2 = new Scanner(System.in);
         double nota;
 
-        for (int i = 0; i < num_asignaturas; i++) {
+        if (nnota >= 0 && nnota <= 10) {
+            notas.add((posicion - 1), nnota);
+        } else {
+            throw new RangoException("Error. Nota no válida.");
+        }
 
-            System.out.println("Dime la nota " + (i + 1) + ":");
-            nota = teclado2.nextDouble();
-
-            if (nota >= 0 && nota <= 10) {
-                notas.add(nota);
-            } else {
-                throw new RangoException("Error. Nota no válida.");
-            }
-
-            if (notas.get(i) > 5) {
-                throw new ArrayIndexOutOfBoundsException("Error, posicion no válida en el array.");
-            }
+        if (posicion > 5) {
+            throw new ArrayIndexOutOfBoundsException("Error, posicion no válida en el array.");
         }
 
     }
@@ -137,7 +131,7 @@ public class Alumno {
 
         System.out.println("Las notas del alumno " + nombre + " son las siguientes: ");
         for (int i = 0; i < notas.size(); i++) {
-            System.out.println("Asignatura " + (i+1) + ": " + notas.get(i));
+            System.out.println("Asignatura " + (i + 1) + ": " + notas.get(i));
         }
 
     }
